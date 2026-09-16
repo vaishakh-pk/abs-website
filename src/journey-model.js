@@ -58,10 +58,10 @@ export function chooseWalk(dx,direction,prev={facing:'depth',side:'right'}){
  return {sequence,facing,side};
 }
 export function poseForSection(id,side='right'){
- if(id==='future')return 'achievement/1_back_idle.png';
- if(['courses','about'].includes(id))return `interaction/${side==='right'?'1_point_right':'2_point_left'}.png`;
- if(['subjects','whyus'].includes(id))return `interaction/${side==='right'?'3_present_right':'4_present_left'}.png`;
- return `idle_turnaround/${side==='right'?'2_idle_side_right':'3_idle_side_left'}.png`;
+ if(id==='future')return 'achievement/1_back_idle.webp';
+ if(['courses','about'].includes(id))return `interaction/${side==='right'?'1_point_right':'2_point_left'}.webp`;
+ if(['subjects','whyus'].includes(id))return `interaction/${side==='right'?'3_present_right':'4_present_left'}.webp`;
+ return `idle_turnaround/${side==='right'?'2_idle_side_right':'3_idle_side_left'}.webp`;
 }
 // Match the rock to the image's CSS cover crop, anchored at the bottom.
 export function mountainLanding(rect){

@@ -50,10 +50,10 @@ for(const height of [677,1024]){
 console.log('Passed: mixed-resolution frames retain identical character size and alignment.');
 
 const {poseForSection,mountainLanding}=await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
-assert.equal(poseForSection('about','left'),'interaction/2_point_left.png');
-assert.equal(poseForSection('whyus','right'),'interaction/3_present_right.png');
-assert.equal(poseForSection('subjects','left'),'interaction/4_present_left.png');
-assert.equal(poseForSection('future','left'),'achievement/1_back_idle.png');
+assert.equal(poseForSection('about','left'),'interaction/2_point_left.webp');
+assert.equal(poseForSection('whyus','right'),'interaction/3_present_right.webp');
+assert.equal(poseForSection('subjects','left'),'interaction/4_present_left.webp');
+assert.equal(poseForSection('future','left'),'achievement/1_back_idle.webp');
 for(const [width,height] of [[922,400],[312,245],[742,340]]){
  const rect={left:80,top:100,bottom:100+height,width,height};
  const rock=mountainLanding(rect);

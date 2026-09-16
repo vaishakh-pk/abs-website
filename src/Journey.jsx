@@ -3,7 +3,7 @@ import {buildPath, chooseWalk, pointOnRoute, poseForSection, advanceGait, mounta
 
 import sequences from './animation-frames.json';
 
-const poseFiles=['idle_turnaround/2_idle_side_right.png','idle_turnaround/3_idle_side_left.png','interaction/1_point_right.png','interaction/2_point_left.png','interaction/3_present_right.png','interaction/4_present_left.png','achievement/1_back_idle.png','achievement/2_celebrate_front.png'];
+const poseFiles=['idle_turnaround/2_idle_side_right.webp','idle_turnaround/3_idle_side_left.webp','interaction/1_point_right.webp','interaction/2_point_left.webp','interaction/3_present_right.webp','interaction/4_present_left.webp','achievement/1_back_idle.webp','achievement/2_celebrate_front.webp'];
 const cycleOrder=[...new Set(['walking_down','walking_up','walking_right','walking_left',...Object.keys(sequences)])];
 const frameFiles=[...poseFiles,...cycleOrder.flatMap(name=>sequences[name]||[])];
 const frameCache=new Map();
@@ -141,7 +141,7 @@ export default function Journey(){
   if(cycle.every(file=>frames.has(file))){const progress=walkClock*cycle.length,index=Math.floor(progress)%cycle.length;draw(cycle[index],time,cycle[(index+1)%cycle.length],progress-Math.floor(progress));}
   character.current.dataset.state='walking';
  }else{
-  draw(arrived?poseForSection('future'):near&&section!=='future'?poseForSection(section,facing):`idle_turnaround/${facing==='right'?'2_idle_side_right':'3_idle_side_left'}.png`,time);
+  draw(arrived?poseForSection('future'):near&&section!=='future'?poseForSection(section,facing):`idle_turnaround/${facing==='right'?'2_idle_side_right':'3_idle_side_left'}.webp`,time);
   character.current.dataset.state=near?'interacting':'idle';
  }
  character.current.dataset.section=section;
