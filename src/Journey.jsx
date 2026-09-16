@@ -48,7 +48,9 @@ export default function Journey(){
  const sceneLane=Math.max(textRight('#about .copy')+82,width*.48);
  const futureLane=Math.max(textRight('#future .copy')+82,width*.47);
  const mountain=bounds('.mountains'),landing=mountainLanding(mountain);
- const contentTargets=Object.fromEntries(Object.entries({home:'.hero-copy',courses:'.stream-grid',subjects:'.subject-grid',whyus:'.feature-grid',about:'#about .copy',future:'#future .copy'}).map(([id,selector])=>{const r=bounds(selector);return [id,{x:(r.left+r.right)/2,...section(id)}]}));
+ // Home is a scenic "look at the building" beat, not a point-at-the-text interaction like
+ // the other stops, so its facing target is the hero photo on the right, not the copy column.
+ const contentTargets=Object.fromEntries(Object.entries({home:'.hero-art',courses:'.stream-grid',subjects:'.subject-grid',whyus:'.feature-grid',about:'#about .copy',future:'#future .copy'}).map(([id,selector])=>{const r=bounds(selector);return [id,{x:(r.left+r.right)/2,...section(id)}]}));
  // Every change of lane has a reserved, measured gap. The course route passes
  // left of the signpost; the wide middle turn sits BELOW the books and ABOVE
  // the next heading. Contact ends above the cards, without sweeping over them.
