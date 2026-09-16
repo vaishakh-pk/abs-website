@@ -1,0 +1,348 @@
+{
+  "walking_right": {
+    "source": "eight_frame_cartoon_boy_walk_cycle.png",
+    "cuts": [
+      0,
+      261,
+      521,
+      806,
+      1082,
+      1353,
+      1625,
+      1902,
+      2172
+    ],
+    "files": [
+      "walking_right_1.png",
+      "walking_right_2.png",
+      "walking_right_3.png",
+      "walking_right_4.png",
+      "walking_right_5.png",
+      "walking_right_6.png",
+      "walking_right_7.png",
+      "walking_right_8.png",
+      "walking_right_9.png",
+      "walking_right_10.png",
+      "walking_right_11.png",
+      "walking_right_12.png",
+      "walking_right_13.png",
+      "walking_right_14.png",
+      "walking_right_15.png",
+      "walking_right_16.png"
+    ],
+    "height_crop": [
+      51,
+      708
+    ],
+    "frame_count": 16,
+    "loop": true,
+    "notes": "Odd frames are original keys; even frames are generated in-betweens, including a 16\u21921 loop close."
+  },
+  "walking_left": {
+    "source": "schoolboy_walking_cycle_sprite_sheet.png",
+    "cuts": [
+      0,
+      298,
+      565,
+      821,
+      1064,
+      1353,
+      1628,
+      1903,
+      2172
+    ],
+    "files": [
+      "walking_left_1.png",
+      "walking_left_2.png",
+      "walking_left_3.png",
+      "walking_left_4.png",
+      "walking_left_5.png",
+      "walking_left_6.png",
+      "walking_left_7.png",
+      "walking_left_8.png",
+      "walking_left_9.png",
+      "walking_left_10.png",
+      "walking_left_11.png",
+      "walking_left_12.png",
+      "walking_left_13.png",
+      "walking_left_14.png",
+      "walking_left_15.png",
+      "walking_left_16.png"
+    ],
+    "height_crop": [
+      31,
+      708
+    ],
+    "frame_count": 16,
+    "loop": true,
+    "notes": "Odd frames are original keys; even frames are generated in-betweens, including a 16\u21921 loop close."
+  },
+  "walking_away_right": {
+    "source": "eight_frame_cartoon_schoolboy_walk_cycle_sprite_sh.png",
+    "cuts": [
+      0,
+      260,
+      549,
+      823,
+      1092,
+      1388,
+      1628,
+      1900,
+      2172
+    ],
+    "files": [
+      "walking_away_right_1.png",
+      "walking_away_right_2.png",
+      "walking_away_right_3.png",
+      "walking_away_right_4.png",
+      "walking_away_right_5.png",
+      "walking_away_right_6.png",
+      "walking_away_right_7.png",
+      "walking_away_right_8.png",
+      "walking_away_right_9.png",
+      "walking_away_right_10.png",
+      "walking_away_right_11.png",
+      "walking_away_right_12.png",
+      "walking_away_right_13.png",
+      "walking_away_right_14.png",
+      "walking_away_right_15.png",
+      "walking_away_right_16.png"
+    ],
+    "height_crop": [
+      11,
+      713
+    ],
+    "frame_count": 16,
+    "loop": true,
+    "notes": "Odd frames are original keys; even frames are generated in-betweens, including a 16\u21921 loop close."
+  },
+  "walking_towards_right": {
+    "source": "eight_frame_schoolboy_walk_cycle_sprite_sheet.png",
+    "cuts": [
+      0,
+      294,
+      569,
+      837,
+      1076,
+      1356,
+      1657,
+      1923,
+      2172
+    ],
+    "files": [
+      "walking_towards_right_1.png",
+      "walking_towards_right_2.png",
+      "walking_towards_right_3.png",
+      "walking_towards_right_4.png",
+      "walking_towards_right_5.png",
+      "walking_towards_right_6.png",
+      "walking_towards_right_7.png",
+      "walking_towards_right_8.png",
+      "walking_towards_right_9.png",
+      "walking_towards_right_10.png",
+      "walking_towards_right_11.png",
+      "walking_towards_right_12.png",
+      "walking_towards_right_13.png",
+      "walking_towards_right_14.png",
+      "walking_towards_right_15.png",
+      "walking_towards_right_16.png"
+    ],
+    "height_crop": [
+      33,
+      706
+    ],
+    "frame_count": 16,
+    "loop": true,
+    "notes": "Odd frames are original keys; even frames are generated in-betweens, including a 16\u21921 loop close."
+  },
+  "walking_away_left": {
+    "source": "3d_schoolboy_walking_cycle_sprite_sheet.png",
+    "cuts": [
+      0,
+      265,
+      535,
+      784,
+      1056,
+      1329,
+      1599,
+      1870,
+      2172
+    ],
+    "files": [
+      "walking_away_left_1.png",
+      "walking_away_left_2.png",
+      "walking_away_left_3.png",
+      "walking_away_left_4.png",
+      "walking_away_left_5.png",
+      "walking_away_left_6.png",
+      "walking_away_left_7.png",
+      "walking_away_left_8.png",
+      "walking_away_left_9.png",
+      "walking_away_left_10.png",
+      "walking_away_left_11.png",
+      "walking_away_left_12.png",
+      "walking_away_left_13.png",
+      "walking_away_left_14.png",
+      "walking_away_left_15.png",
+      "walking_away_left_16.png"
+    ],
+    "height_crop": [
+      19,
+      708
+    ],
+    "frame_count": 16,
+    "loop": true,
+    "notes": "Odd frames are original keys; even frames are generated in-betweens, including a 16\u21921 loop close."
+  },
+  "walking_towards_left": {
+    "source": "3d_boy_walking_sprite_sheet.png",
+    "cuts": [
+      0,
+      288,
+      521,
+      825,
+      1064,
+      1333,
+      1601,
+      1897,
+      2172
+    ],
+    "files": [
+      "walking_towards_left_1.png",
+      "walking_towards_left_2.png",
+      "walking_towards_left_3.png",
+      "walking_towards_left_4.png",
+      "walking_towards_left_5.png",
+      "walking_towards_left_6.png",
+      "walking_towards_left_7.png",
+      "walking_towards_left_8.png",
+      "walking_towards_left_9.png",
+      "walking_towards_left_10.png",
+      "walking_towards_left_11.png",
+      "walking_towards_left_12.png",
+      "walking_towards_left_13.png",
+      "walking_towards_left_14.png",
+      "walking_towards_left_15.png",
+      "walking_towards_left_16.png"
+    ],
+    "height_crop": [
+      27,
+      724
+    ],
+    "frame_count": 16,
+    "loop": true,
+    "notes": "Odd frames are original keys; even frames are generated in-betweens, including a 16\u21921 loop close."
+  },
+  "idle_turnaround": {
+    "source": "six_pose_3d_schoolboy_character_sheet.png",
+    "cuts": [
+      0,
+      243,
+      471,
+      716,
+      947,
+      1203,
+      1448
+    ],
+    "files": [
+      "1_idle_front.png",
+      "2_idle_side_right.png",
+      "3_idle_side_left.png",
+      "4_idle_back_right.png",
+      "5_idle_back_left.png",
+      "6_idle_look_up.png"
+    ],
+    "height_crop": [
+      13,
+      1054
+    ]
+  },
+  "interaction": {
+    "source": "four_pose_schoolboy_character_sheet.png",
+    "cuts": [
+      0,
+      352,
+      714,
+      1112,
+      1448
+    ],
+    "files": [
+      "1_point_right.png",
+      "2_point_left.png",
+      "3_present_right.png",
+      "4_present_left.png"
+    ],
+    "height_crop": [
+      44,
+      1070
+    ]
+  },
+  "achievement": {
+    "source": "schoolboy_pose_sheet_with_backpack.png",
+    "cuts": [
+      0,
+      338,
+      742,
+      1122,
+      1448
+    ],
+    "files": [
+      "1_back_idle.png",
+      "2_celebrate_front.png",
+      "3_celebrate_back.png",
+      "4_idle_look_up_front.png"
+    ],
+    "height_crop": [
+      1,
+      1068
+    ]
+  },
+  "walking_down": {
+    "source": "walking_down generated 3:4 frames",
+    "files": [
+      "walking_down_1.png",
+      "walking_down_2.png",
+      "walking_down_3.png",
+      "walking_down_4.png",
+      "walking_down_5.png",
+      "walking_down_6.png",
+      "walking_down_7.png",
+      "walking_down_8.png",
+      "walking_down_9.png",
+      "walking_down_10.png",
+      "walking_down_11.png",
+      "walking_down_12.png",
+      "walking_down_13.png",
+      "walking_down_14.png",
+      "walking_down_15.png",
+      "walking_down_16.png"
+    ],
+    "frame_count": 16,
+    "loop": true,
+    "notes": "Front-facing walk toward the camera (scroll down). Odd frames are generated keys; even frames are generated in-betweens, including a 16\u21921 loop close."
+  },
+  "walking_up": {
+    "source": "walking_up generated 3:4 frames",
+    "files": [
+      "walking_up_1.png",
+      "walking_up_2.png",
+      "walking_up_3.png",
+      "walking_up_4.png",
+      "walking_up_5.png",
+      "walking_up_6.png",
+      "walking_up_7.png",
+      "walking_up_8.png",
+      "walking_up_9.png",
+      "walking_up_10.png",
+      "walking_up_11.png",
+      "walking_up_12.png",
+      "walking_up_13.png",
+      "walking_up_14.png",
+      "walking_up_15.png",
+      "walking_up_16.png"
+    ],
+    "frame_count": 16,
+    "loop": true,
+    "notes": "Back-facing walk away from the camera (scroll up). Odd frames are generated keys; even frames are generated in-betweens, including a 16\u21921 loop close."
+  }
+}

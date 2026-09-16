@@ -1,0 +1,30 @@
+{
+  "bytes": 492400,
+  "meshes": 99,
+  "triangles": 39376,
+  "animations": [
+    {
+      "name": "Idle",
+      "duration": 3
+    },
+    {
+      "name": "Walk",
+      "duration": 1.05
+    },
+    {
+      "name": "Point",
+      "duration": 3
+    },
+    {
+      "name": "Present",
+      "duration": 3
+    },
+    {
+      "name": "Celebrate",
+      "duration": 2
+    }
+  ],
+  "format": "glTF 2.0",
+  "rig": "articulated transform hierarchy",
+  "textures": 0
+}

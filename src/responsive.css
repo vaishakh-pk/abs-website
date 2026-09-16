@@ -1,0 +1,98 @@
+/* Compact layouts use normal document flow and a reserved animation gutter. */
+html.lenis,html.lenis body{scroll-behavior:auto!important}
+.section,.copy,.stream,.contact-cards a{min-width:0}
+@media(max-width:1100px){
+ html{scroll-padding-top:90px}
+ header{height:74px}
+ .header-inner{padding:6px 24px;gap:16px}
+ .header-inner .logo{width:70px;height:58px}
+ .header-inner>.button{margin-left:auto;padding:11px 20px}
+ .menu{display:grid;place-items:center;padding:9px;border:0;background:transparent;color:var(--ink)}
+ header nav{display:none}
+ header nav.open{display:flex;position:absolute;top:74px;left:0;right:0;margin:0;padding:16px 26px;background:#fff;box-shadow:0 12px 24px #123b671a;flex-direction:column;align-items:stretch;gap:2px;max-height:calc(100dvh - 74px);overflow:auto}
+ header nav a{padding:12px;font-size:14px}
+ .section:not(.hero){display:block;height:auto;min-height:0;padding:42px 30px 42px 78px}
+ .section .copy,.course-content .copy{width:100%;padding-left:0;margin:0 0 24px}
+ .copy .marker{margin-left:0}
+ h2,.why h2{font-size:30px;line-height:1.2}
+ .copy p,.why .copy p,.about p,.future p,.contact .copy p{font-size:14px;line-height:1.65;max-width:560px}
+ .hero{height:auto;min-height:0;display:flex;flex-direction:column;padding:40px 30px 0}
+ .hero-copy{width:100%;max-width:620px;align-self:flex-start}
+ h1{font-size:46px;line-height:1.1;max-width:580px}
+ .hero-copy>p:not(.eyebrow){font-size:14px;max-width:530px}
+ .desktop-break{display:none}
+ .actions{flex-wrap:wrap;gap:12px;margin:24px 0}
+ .learn{font-size:13px;margin-bottom:20px}
+ .hero-art{position:relative;inset:auto;flex:none;width:calc(100% + 60px);height:360px;align-self:center;background-size:cover;background-position:right center;border-radius:0 0 15% 0;mask-image:linear-gradient(transparent,#000 15%,#000 82%,transparent);mask-composite:add}
+ .hero-note{top:auto;bottom:230px;left:8%;font-size:27px}
+ .campus-brand{width:105px;top:14%;right:18%}
+ .start-marker{bottom:25px;left:58%}
+ .course-content{width:100%}
+ .stream-grid,.subject-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0}
+ .stream,.stream.compact{display:block;min-height:230px;padding:22px 16px;border-radius:17px}
+ .stream-title,.compact .stream-title{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-height:70px}
+ .stream-title svg,.compact .stream-title svg{width:32px;height:32px}
+ .stream-title h3,.compact h3{font-size:15px;line-height:1.35;padding:0}
+ .stream ul,.compact ul{font-size:12px;line-height:1.7;margin-top:16px;padding-left:15px}
+ .course-art{float:none;min-height:0;height:0;margin:0;width:100%}
+ .signpost{display:none}
+ .subject-grid{position:relative;margin:0;scroll-margin-top:100px}
+ .subjects-note{display:none}
+ .subject-art{display:none}
+ .feature-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:25px}
+ .feature{min-height:125px;padding:18px 10px}.feature span{font-size:12px;line-height:1.4}
+ .feature-grid>.note{font-size:27px}
+ .room,.mountains{position:relative;inset:auto;width:calc(100% + 30px);height:340px;margin:28px -30px 0 0;border-radius:28px 0 0 28px;mask-image:linear-gradient(90deg,transparent,#000 12%),linear-gradient(#000 85%,transparent);mask-composite:intersect;background-position:center;background-size:cover}
+ .room-logo{width:100px;top:22%;left:39%}.room .note{font-size:27px;right:6%;top:24%}
+ .future-note{top:auto;bottom:235px;right:8%;font-size:27px}
+ .contact-note{position:static;display:flex;justify-content:flex-end;gap:16px;font-size:27px;margin:15px 20px 25px}
+ .contact-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+ .contact-cards a{display:flex;flex-direction:column;min-height:170px;padding:18px;gap:8px}
+ .contact-cards b{font-size:13px;margin:0 0 8px}.contact-cards span{font-size:12px}
+ .journey{display:block;z-index:1}.journey path{stroke-width:1.7;opacity:.8}
+ .journey circle{stroke-width:3}.journey circle.dot-halo{stroke-width:0}
+ .traveller{width:64px;height:96px}
+ footer{padding:30px}.footer-top{flex-wrap:wrap;gap:24px}.footer-brand{margin-right:auto}
+ footer nav{display:flex;order:3;flex-wrap:wrap;justify-content:center;width:100%;gap:20px}
+ .footer-bottom{gap:18px;font-size:11px}
+}
+@media(max-width:600px){
+ .header-inner{padding-inline:18px}.header-inner>.button{padding:10px 17px}
+ .section:not(.hero){padding:32px 20px 36px 64px}
+ .hero{padding:32px 20px 0}
+ h1{font-size:clamp(32px,9.6vw,42px);letter-spacing:-1.2px}
+ h2,.why h2{font-size:clamp(24px,6.8vw,29px);letter-spacing:-.8px}
+ .hero-copy>p:not(.eyebrow),.copy p,.why .copy p,.about p,.future p,.contact .copy p{font-size:13px;line-height:1.6}
+ .eyebrow{font-size:9px;letter-spacing:1.4px}
+ .hero-art{width:calc(100% + 40px);height:305px;background-size:auto 120%;background-position:right center}
+ .hero-note{font-size:24px;bottom:205px;left:6%}.campus-brand{width:78px;right:15%}
+ .actions{gap:8px}.actions .button{padding:11px 14px;font-size:11px}
+ .start-marker{left:53%;bottom:20px}.start-marker .marker span{font-size:11px}
+ .stream-grid,.subject-grid{grid-template-columns:1fr;gap:14px}
+ .stream,.stream.compact{display:grid;grid-template-columns:minmax(80px,.8fr) minmax(0,1fr);gap:16px;min-height:0;padding:20px 16px}
+ .stream-title,.compact .stream-title{min-height:0;gap:12px}
+ .stream-title h3,.compact h3{font-size:14px}
+ .stream ul,.compact ul{margin:0;font-size:12px}
+ .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .feature{padding:16px 8px;min-height:130px}.feature span{font-size:11px}
+ .room,.mountains{height:245px;width:calc(100% + 20px);margin-right:-20px}
+ .room-logo{width:70px}.room .note{font-size:21px;right:4%}
+ .future-note{font-size:23px;bottom:185px;right:5%}
+ .contact-cards{grid-template-columns:1fr}
+ .contact-cards a{flex-direction:row;min-height:100px;padding:18px;gap:12px}
+ .contact-cards b{margin:4px 0 7px}.contact-cards span{font-size:12px}
+ .traveller{width:44px;height:66px}
+ footer{padding:28px 20px}.footer-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:360px){
+ .actions{flex-direction:column;align-items:flex-start}
+ .hero-art{height:275px}.hero-note{bottom:180px}
+ .stream,.stream.compact{display:block}.stream-title,.compact .stream-title{flex-direction:row;align-items:center;margin-bottom:15px}
+ .feature-grid{gap:8px}.feature span{font-size:10px}
+}
+@media(min-width:601px) and (max-width:1100px){.hero-art{background-size:auto 160%;background-position:right center}}
+@media(prefers-reduced-motion:reduce){html,html.lenis,html.lenis body{scroll-behavior:auto!important}}
+@media(max-width:600px){.traveller{width:56px;height:84px}}
+/* Keep the foreground rock visible and align the journey endpoint to its cover crop. */
+.mountains{background-position:center bottom}
+.traveller[data-docked="true"]::after{content:'';position:absolute;width:36%;height:5%;left:32%;bottom:1.8%;border-radius:50%;background:#263b4b30;filter:blur(2px);z-index:-1}
