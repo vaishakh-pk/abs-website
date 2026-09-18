@@ -9,8 +9,8 @@ export function installScrollLimit(){
   instance?.destroy();instance=null;
   if(reduced.matches)return;
   instance=new Lenis({
-   autoRaf:true,lerp:.12,smoothWheel:true,syncTouch:false,
-   anchors:{offset:-90,duration:.85},
+   autoRaf:true,lerp:.18,smoothWheel:true,syncTouch:false,
+   anchors:{offset:-90,duration:.7},
    prevent:node=>Boolean(node.closest('#navigation.open')),
   });
  };

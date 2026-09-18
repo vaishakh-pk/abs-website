@@ -19,7 +19,7 @@ async function readSource(file){
  const source=document.createElement('canvas');source.width=img.naturalWidth;source.height=img.naturalHeight;
  const ctx=source.getContext('2d',{willReadFrequently:true});ctx.drawImage(img,0,0);
  const {data}=ctx.getImageData(0,0,source.width,source.height);let left=source.width,top=source.height,right=0,bottom=0;
- for(let y=0;y<source.height;y++)for(let x=0;x<source.width;x++)if(data[(y*source.width+x)*4+3]>100){left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y)}
+ for(let y=0;y<source.height;y+=2)for(let x=0;x<source.width;x+=2)if(data[(y*source.width+x)*4+3]>100){left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y)}
  if(right<=left||bottom<=top)throw new Error(`Empty frame: ${file}`);
  const torsoTop=Math.round(top+(bottom-top)*.35),torsoBottom=Math.round(top+(bottom-top)*.57);
  let total=0,count=0;
@@ -28,9 +28,18 @@ async function readSource(file){
 }
 async function loadFrame(file){
  const source=await readSource(file);
- const scale=400/(source.bottom-source.top+1);
+ // Walk cycles are pre-aligned on a padded canvas. Fit the opaque figure to the
+ // same 400px used by idle/end poses, with a shared canvas fraction so a longer
+ // stride cannot shrink or grow the sprite. Tightly cropped walk sources still
+ // scale from their own silhouette so mixed resolutions stay equal.
+ const isWalk=file.startsWith('walking_');
+ const body=source.bottom-source.top+1;
+ const fit=isWalk&&body<source.source.height*.81?source.source.height*.81:body;
+ const scale=400/fit;
+ const anchor=isWalk?source.source.width/2:source.anchor;
+ const footY=source.bottom;
  const normalized=document.createElement('canvas');normalized.width=280;normalized.height=440;
- normalized.getContext('2d').drawImage(source.source,140-source.anchor*scale,432-source.bottom*scale,source.source.width*scale,source.source.height*scale);
+ normalized.getContext('2d').drawImage(source.source,140-anchor*scale,432-footY*scale,source.source.width*scale,source.source.height*scale);
  return normalized;
 }
 
@@ -78,23 +87,12 @@ export default function Journey(){
  const {d,segments}=buildPath(dots);setGeometry({width,height,dots,segments,d,contentTargets})};
  const observer=new ResizeObserver(measure);observer.observe(main);measure();return()=>observer.disconnect()},[]);
  useEffect(()=>{if(!geometry.dots.length)return;let disposed=false,raf=0,lastDraw='',currentY=geometry.dots[0].y,walkClock=0,direction=1,gaitX=geometry.dots[0].x,gaitY=currentY,lastMove=0,walk={facing:'depth',side:'right'},locked=null;
- const frames=new Map();const reduced=matchMedia('(prefers-reduced-motion: reduce)');const main=document.querySelector('main');const ctx=canvas.current.getContext('2d');
- let transition=null;
- const draw=(file,time,nextFile=null,mix=0)=>{const frame=frames.get(file);if(!frame)return;
- const changed=file!==lastDraw;
- const oldGroup=lastDraw.split('/')[0],newGroup=file.split('/')[0];
- if(changed&&lastDraw&&oldGroup!==newGroup&&!reduced.matches){
-  const previous=document.createElement('canvas');previous.width=280;previous.height=440;previous.getContext('2d').drawImage(canvas.current,0,0);
-  transition={previous,start:time};
- }
- if(changed||transition||nextFile){ctx.clearRect(0,0,280,440);ctx.globalCompositeOperation='lighter';const blend=transition?Math.min(1,(time-transition.start)/100):1;
-  if(transition&&blend<1){ctx.globalAlpha=1-blend;ctx.drawImage(transition.previous,0,0)}
-  const nextFrame=nextFile&&frames.get(nextFile);
-  ctx.globalAlpha=blend*(nextFrame?1-mix:1);ctx.drawImage(frame,0,0);
-  if(nextFrame&&mix>0){ctx.globalAlpha=blend*mix;ctx.drawImage(nextFrame,0,0)}ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
-  if(blend===1)transition=null;
-  lastDraw=file;character.current.dataset.frame=file;
- }};
+ const frames=new Map();const reduced=matchMedia('(prefers-reduced-motion: reduce)');const main=document.querySelector('main');const ctx=canvas.current.getContext('2d',{alpha:true,desynchronized:true});
+ const setData=(el,key,value)=>{if(el.dataset[key]!==value)el.dataset[key]=value};
+ const draw=file=>{const frame=frames.get(file);if(!frame||file===lastDraw)return;
+ ctx.clearRect(0,0,280,440);ctx.globalAlpha=1;ctx.drawImage(frame,0,0);
+ lastDraw=file;setData(character.current,'frame',file);
+ };
  const stopPoints=geometry.dots.filter(p=>p.stop);
  const routeY=()=>Math.max(geometry.dots[0].y,Math.min(geometry.dots.at(-1).y,reduced.matches?geometry.dots[0].y:scrollY+innerHeight*.70-main.offsetTop));
  const place=()=>{
@@ -108,7 +106,7 @@ export default function Journey(){
  const ENTER=30,EXIT=48;
  let lastTime=0,activeSection='';
  const sectionElements=Array.from(document.querySelectorAll('.section')); 
- const render=time=>{raf=0;if(disposed)return;const dt=Math.min(40,time-lastTime||16);lastTime=time;
+ const render=time=>{if(disposed)return;const dt=Math.min(32,time-lastTime||16);lastTime=time;
  const oldY=gaitY,oldX=gaitX;
  const point=place();
  direction=currentY===oldY?direction:(currentY>oldY?1:-1);
@@ -122,41 +120,41 @@ export default function Journey(){
  gaitX=point.x;gaitY=currentY;
  // Position is pinned to scrollY on every scroll tick. Gait uses path distance
  // since the last paint, with a short hold so paced-scroll gaps do not flash idle.
- const moving=!reduced.matches&&distance>.35;
+ const moving=!reduced.matches&&distance>.08;
  if(moving)lastMove=time;
- const walking=!reduced.matches&&(moving||(lastMove&&time-lastMove<90));
+ const walking=!reduced.matches&&(moving||(lastMove&&time-lastMove<240));
  const arrived=currentY>=geometry.dots.at(-1).y-.5;
  const section=arrived?'future':near?.id||Object.entries(geometry.contentTargets).find(([,r])=>currentY>=r.top&&currentY<r.bottom)?.[0]||closest.id;
  const facing=(geometry.contentTargets[section]?.x??point.x+1)>=point.x?'right':'left';
- character.current.dataset.facing=arrived?'back':facing;
- character.current.dataset.docked=String(arrived);
+ setData(character.current,'facing',arrived?'back':facing);
+ setData(character.current,'docked',String(arrived));
  const enteringMountain=currentY>=geometry.dots.at(-2).y;
  if(walking){
   if(moving){
    walkClock=advanceGait(walkClock,distance,dt);
-   const ahead=pointOnRoute(geometry.segments,currentY+direction*4);
+   const ahead=pointOnRoute(geometry.segments,currentY+direction*28);
    walk=chooseWalk(ahead.x-point.x,direction,walk);
    if(enteringMountain&&direction>0)walk={...walk,sequence:`walking_away_${ahead.x>=point.x?'right':'left'}`};
   }
   const cycle=sequences[walk.sequence];
   // Switch only to fully decoded cycles; never display a partial load out of order.
-  if(cycle.every(file=>frames.has(file))){const progress=walkClock*cycle.length,index=Math.floor(progress)%cycle.length;draw(cycle[index],time,cycle[(index+1)%cycle.length],progress-Math.floor(progress));}
-  character.current.dataset.state='walking';
+  if(cycle.every(file=>frames.has(file)))draw(cycle[Math.floor(walkClock*cycle.length)%cycle.length]);
+  setData(character.current,'state','walking');
  }else{
-  draw(arrived?poseForSection('future'):near&&section!=='future'?poseForSection(section,facing):`idle_turnaround/${facing==='right'?'2_idle_side_right':'3_idle_side_left'}.webp`,time);
-  character.current.dataset.state=near?'interacting':'idle';
+  draw(arrived?poseForSection('future'):near&&section!=='future'?poseForSection(section,facing):`idle_turnaround/${facing==='right'?'2_idle_side_right':'3_idle_side_left'}.webp`);
+  setData(character.current,'state',near?'interacting':'idle');
  }
- character.current.dataset.section=section;
+ setData(character.current,'section',section);
  const active=near?section:'';if(active!==activeSection){sectionElements.forEach(el=>{if(el.id===active)el.dataset.journeyActive='true';else delete el.dataset.journeyActive});activeSection=active;}
- if(!reduced.matches&&(walking||transition))raf=requestAnimationFrame(render);
+ if(!disposed)raf=requestAnimationFrame(render);
  };
- const wake=()=>{if(!raf)raf=requestAnimationFrame(render)};
+ const wake=()=>{if(!raf&&!disposed)raf=requestAnimationFrame(render)};
  const onScroll=()=>{wake()};
  // Decode the idle pose first, then warm all loops with a bounded work queue.
- (async()=>{const first=poseFiles[0];try{frames.set(first,await getFrame(first));if(disposed)return;draw(first,performance.now());wake()}catch{}let index=0;await Promise.all(Array.from({length:3},async()=>{while(index<frameFiles.length&&!disposed){const file=frameFiles[index++];try{frames.set(file,await getFrame(file));if(!disposed)wake()}catch{ /* Keep the already-decoded pose if a frame cannot load. */ }}}))})();
+ (async()=>{const first=poseFiles[0];try{frames.set(first,await getFrame(first));if(disposed)return;draw(first);wake()}catch{}let index=0;await Promise.all(Array.from({length:3},async()=>{while(index<frameFiles.length&&!disposed){const file=frameFiles[index++];try{frames.set(file,await getFrame(file))}catch{ /* Keep the already-decoded pose if a frame cannot load. */ }}}))})();
  currentY=routeY();gaitX=pointOnRoute(geometry.segments,currentY).x;gaitY=currentY;
  onScroll();addEventListener('scroll',onScroll,{passive:true});reduced.addEventListener('change',onScroll);
- return()=>{disposed=true;cancelAnimationFrame(raf);removeEventListener('scroll',onScroll);reduced.removeEventListener('change',onScroll);document.querySelectorAll('[data-journey-active]').forEach(el=>delete el.dataset.journeyActive)};
+ return()=>{disposed=true;cancelAnimationFrame(raf);raf=0;removeEventListener('scroll',onScroll);reduced.removeEventListener('change',onScroll);document.querySelectorAll('[data-journey-active]').forEach(el=>delete el.dataset.journeyActive)};
  },[geometry]);
  // The traveller is a sibling of .journey (not nested inside it) so its z-index can be
  // toggled independently: behind the section content it would otherwise stand on top of

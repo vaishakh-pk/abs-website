@@ -7,15 +7,7 @@
     "walking_away_left/walking_away_left_5.webp",
     "walking_away_left/walking_away_left_6.webp",
     "walking_away_left/walking_away_left_7.webp",
-    "walking_away_left/walking_away_left_8.webp",
-    "walking_away_left/walking_away_left_9.webp",
-    "walking_away_left/walking_away_left_10.webp",
-    "walking_away_left/walking_away_left_11.webp",
-    "walking_away_left/walking_away_left_12.webp",
-    "walking_away_left/walking_away_left_13.webp",
-    "walking_away_left/walking_away_left_14.webp",
-    "walking_away_left/walking_away_left_15.webp",
-    "walking_away_left/walking_away_left_16.webp"
+    "walking_away_left/walking_away_left_8.webp"
   ],
   "walking_away_right": [
     "walking_away_right/walking_away_right_1.webp",
@@ -25,15 +17,7 @@
     "walking_away_right/walking_away_right_5.webp",
     "walking_away_right/walking_away_right_6.webp",
     "walking_away_right/walking_away_right_7.webp",
-    "walking_away_right/walking_away_right_8.webp",
-    "walking_away_right/walking_away_right_9.webp",
-    "walking_away_right/walking_away_right_10.webp",
-    "walking_away_right/walking_away_right_11.webp",
-    "walking_away_right/walking_away_right_12.webp",
-    "walking_away_right/walking_away_right_13.webp",
-    "walking_away_right/walking_away_right_14.webp",
-    "walking_away_right/walking_away_right_15.webp",
-    "walking_away_right/walking_away_right_16.webp"
+    "walking_away_right/walking_away_right_8.webp"
   ],
   "walking_down": [
     "walking_down/walking_down_1.webp",
@@ -43,15 +27,7 @@
     "walking_down/walking_down_5.webp",
     "walking_down/walking_down_6.webp",
     "walking_down/walking_down_7.webp",
-    "walking_down/walking_down_8.webp",
-    "walking_down/walking_down_9.webp",
-    "walking_down/walking_down_10.webp",
-    "walking_down/walking_down_11.webp",
-    "walking_down/walking_down_12.webp",
-    "walking_down/walking_down_13.webp",
-    "walking_down/walking_down_14.webp",
-    "walking_down/walking_down_15.webp",
-    "walking_down/walking_down_16.webp"
+    "walking_down/walking_down_8.webp"
   ],
   "walking_left": [
     "walking_left/walking_left_1.webp",
@@ -61,15 +37,7 @@
     "walking_left/walking_left_5.webp",
     "walking_left/walking_left_6.webp",
     "walking_left/walking_left_7.webp",
-    "walking_left/walking_left_8.webp",
-    "walking_left/walking_left_9.webp",
-    "walking_left/walking_left_10.webp",
-    "walking_left/walking_left_11.webp",
-    "walking_left/walking_left_12.webp",
-    "walking_left/walking_left_13.webp",
-    "walking_left/walking_left_14.webp",
-    "walking_left/walking_left_15.webp",
-    "walking_left/walking_left_16.webp"
+    "walking_left/walking_left_8.webp"
   ],
   "walking_right": [
     "walking_right/walking_right_1.webp",
@@ -79,15 +47,7 @@
     "walking_right/walking_right_5.webp",
     "walking_right/walking_right_6.webp",
     "walking_right/walking_right_7.webp",
-    "walking_right/walking_right_8.webp",
-    "walking_right/walking_right_9.webp",
-    "walking_right/walking_right_10.webp",
-    "walking_right/walking_right_11.webp",
-    "walking_right/walking_right_12.webp",
-    "walking_right/walking_right_13.webp",
-    "walking_right/walking_right_14.webp",
-    "walking_right/walking_right_15.webp",
-    "walking_right/walking_right_16.webp"
+    "walking_right/walking_right_8.webp"
   ],
   "walking_towards_left": [
     "walking_towards_left/walking_towards_left_1.webp",
@@ -97,15 +57,7 @@
     "walking_towards_left/walking_towards_left_5.webp",
     "walking_towards_left/walking_towards_left_6.webp",
     "walking_towards_left/walking_towards_left_7.webp",
-    "walking_towards_left/walking_towards_left_8.webp",
-    "walking_towards_left/walking_towards_left_9.webp",
-    "walking_towards_left/walking_towards_left_10.webp",
-    "walking_towards_left/walking_towards_left_11.webp",
-    "walking_towards_left/walking_towards_left_12.webp",
-    "walking_towards_left/walking_towards_left_13.webp",
-    "walking_towards_left/walking_towards_left_14.webp",
-    "walking_towards_left/walking_towards_left_15.webp",
-    "walking_towards_left/walking_towards_left_16.webp"
+    "walking_towards_left/walking_towards_left_8.webp"
   ],
   "walking_towards_right": [
     "walking_towards_right/walking_towards_right_1.webp",
@@ -115,15 +67,7 @@
     "walking_towards_right/walking_towards_right_5.webp",
     "walking_towards_right/walking_towards_right_6.webp",
     "walking_towards_right/walking_towards_right_7.webp",
-    "walking_towards_right/walking_towards_right_8.webp",
-    "walking_towards_right/walking_towards_right_9.webp",
-    "walking_towards_right/walking_towards_right_10.webp",
-    "walking_towards_right/walking_towards_right_11.webp",
-    "walking_towards_right/walking_towards_right_12.webp",
-    "walking_towards_right/walking_towards_right_13.webp",
-    "walking_towards_right/walking_towards_right_14.webp",
-    "walking_towards_right/walking_towards_right_15.webp",
-    "walking_towards_right/walking_towards_right_16.webp"
+    "walking_towards_right/walking_towards_right_8.webp"
   ],
   "walking_up": [
     "walking_up/walking_up_1.webp",
@@ -133,14 +77,6 @@
     "walking_up/walking_up_5.webp",
     "walking_up/walking_up_6.webp",
     "walking_up/walking_up_7.webp",
-    "walking_up/walking_up_8.webp",
-    "walking_up/walking_up_9.webp",
-    "walking_up/walking_up_10.webp",
-    "walking_up/walking_up_11.webp",
-    "walking_up/walking_up_12.webp",
-    "walking_up/walking_up_13.webp",
-    "walking_up/walking_up_14.webp",
-    "walking_up/walking_up_15.webp",
-    "walking_up/walking_up_16.webp"
+    "walking_up/walking_up_8.webp"
   ]
 }

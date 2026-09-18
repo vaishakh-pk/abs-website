@@ -25,12 +25,12 @@ assert.deepEqual(pointOnRoute(segments,-100),anchors[0]);
 assert.deepEqual(pointOnRoute(segments,99999),anchors.at(-1));
 console.log('Passed: curve continuity, corridor limits, sprite alignment, directional frames, endpoints.');
 const {advanceGait}=await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
-const seen=new Set();let phase=0;for(let i=0;i<80;i++){seen.add(Math.floor(phase*16));phase=advanceGait(phase,3.5)}assert.equal(seen.size,16,'All 16 supplied frames must play during a stride');
+const seen=new Set();let phase=0;for(let i=0;i<80;i++){seen.add(Math.floor(phase*8));phase=advanceGait(phase,3.5)}assert.equal(seen.size,8,'All 8 supplied frames must play during a stride');
 assert.equal(advanceGait(.4,0),.4,'No walking while stationary');
 const manifest=JSON.parse(await readFile(new URL('../src/animation-frames.json',import.meta.url),'utf8'));
-for(const frames of Object.values(manifest)){assert.equal(frames.length,16);for(const file of frames)await readFile(new URL('../public/animation/'+file,import.meta.url))}
+for(const frames of Object.values(manifest)){assert.equal(frames.length,8);for(const file of frames)await readFile(new URL('../public/animation/'+file,import.meta.url))}
 assert.ok(advanceGait(0,1000,16)<=.032,'Large scroll bursts must not skip entire walking cycles');
-console.log('Passed: 16-frame playback, cadence limit, all 128 source frames exist.');
+console.log('Passed: 8-frame playback, cadence limit, all 64 source frames exist.');
 
 // Exercise the production normalizer with original and larger in-between
 // images. Reusing the first frame's pixel scale would enlarge the second one.
@@ -47,6 +47,15 @@ for(const height of [677,1024]){
  assert.equal(x+width/2,140,'Torso remains centered');
  assert.ok(Math.abs(y+(height-1)*400/height-432)<1e-9,'Feet remain on the shared baseline');
 }
+calls.length=0;
+const padded={source:{width:520,height:900},top:148,bottom:874,anchor:260};
+await new AsyncFunction('file','readSource','document',normalizer)('walking_down/frame.webp',async()=>padded,fakeDocument);
+const [,px,py,pWidth,pHeight]=calls.at(-1);
+const pScale=400/(900*.81);
+assert.ok(Math.abs(pHeight-900*pScale)<1e-9,'Padded walk canvases scale from a shared canvas fraction');
+assert.equal(px+pWidth/2,140,'Padded walk frames stay centered');
+assert.ok(Math.abs(py+874*pScale-432)<1e-9,'Padded walk feet stay on the pose baseline');
+assert.ok(Math.abs((874-148+1)*pScale-400)<12,'Walk silhouette matches the 400px idle/end pose height');
 console.log('Passed: mixed-resolution frames retain identical character size and alignment.');
 
 const {poseForSection,mountainLanding}=await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);

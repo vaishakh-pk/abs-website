@@ -71,7 +71,9 @@ export function mountainLanding(rect){
 
 
 export function advanceGait(phase,distance,dt=16){
- // Keep all in-between frames visible during fast wheel bursts. A full gait
- // remains distance-driven at normal speeds and is limited to two loops/sec.
- return (phase+Math.min(Math.abs(distance)/144,dt/500))%1;
+ const step=Math.abs(distance);
+ if(!step)return phase;
+ // Distance drives the stride. A small time floor keeps slow smoothed-scroll
+ // ticks from freezing the cycle; the cap stops fast wheel bursts skipping poses.
+ return (phase+Math.min(Math.max(step/144,dt/720),dt/500))%1;
 }
